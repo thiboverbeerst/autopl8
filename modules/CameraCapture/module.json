@@ -1,0 +1,17 @@
+
+{
+    "$schema-version": "0.0.1",
+    "description": "",
+    "image": {
+        "repository": "$CONTAINER_REGISTRY_ADDRESS/cameracapture",
+        "tag": {
+            "version": "0.2.11",
+            "platforms": {
+                "arm64": "./arm64.Dockerfile"
+            }
+        },
+        "buildOptions": []
+    },
+    
+    "language": "python"
+}
