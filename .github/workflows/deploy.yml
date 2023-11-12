@@ -14,6 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Set branch name
+      id: set_branch
+      run: echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
     - name: Set up SSH key
       run: |
         mkdir -p ~/.ssh
@@ -23,4 +27,4 @@ jobs:
 
     - name: Deploy to Server
       run: |
-        ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_ADDRESS }} 'cd ${{ secrets.PROJECT_DIRECTORY }} && git pull origin ${GITHUB_REF##*/}'
+        ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_ADDRESS }} 'cd ${{ secrets.PROJECT_DIRECTORY }} && git pull origin ${{ env.BRANCH_NAME }}'
