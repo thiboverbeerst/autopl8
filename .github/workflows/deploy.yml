@@ -7,10 +7,10 @@ on:
       - main
 
 env:
-  SERVER_ADDRESS: ${{ secrets.DEV_SERVER_ADDRESS }}
-  SSH_KEY: ${{ secrets.DEV_SSH_KEY }}
-  SSH_USERNAME: ${{ secrets.DEV_SSH_USERNAME }}
-  PROJECT_DIRECTORY: ${{ secrets.DEV_PROJECT_DIRECTORY }}
+  SERVER_ADDRESS: ${{ secrets.SERVER_ADDRESS }}
+  SSH_KEY: SSH_KEY${{ secrets.SSH_KEY }}
+  SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+  PROJECT_DIRECTORY: ${{ secrets.PROJECT_DIRECTORY }}
 
 jobs:
   deploy:
