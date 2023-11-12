@@ -1,12 +1,10 @@
-name: Deploy to Development
+name: Deploy to Server
 
 on:
-  push:
-    branches:
-      - dev
   pull_request:
     branches:
       - dev
+      - main
 
 env:
   SERVER_ADDRESS: ${{ secrets.DEV_SERVER_ADDRESS }}
@@ -17,6 +15,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: 
+      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -28,6 +28,6 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H "$SERVER_ADDRESS" >> ~/.ssh/known_hosts
 
-    - name: Deploy to Development Server
+    - name: Deploy to Server
       run: |
         ssh -i ~/.ssh/id_rsa $SSH_USERNAME@$SERVER_ADDRESS 'cd $PROJECT_DIRECTORY && git pull origin dev'
