@@ -1,16 +1,10 @@
 name: Deploy to Server
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
       - main
-
-env:
-  SERVER_ADDRESS: ${{ secrets.SERVER_ADDRESS }}
-  SSH_KEY: SSH_KEY${{ secrets.SSH_KEY }}
-  SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
-  PROJECT_DIRECTORY: ${{ secrets.PROJECT_DIRECTORY }}
 
 jobs:
   deploy:
@@ -18,16 +12,15 @@ jobs:
     environment: 
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'development' }}
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: Set up SSH key
       run: |
         mkdir -p ~/.ssh
-        echo "$SSH_KEY" > ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H "$SERVER_ADDRESS" >> ~/.ssh/known_hosts
+        ssh-keyscan -H "${{ secrets.SERVER_ADDRESS }}" >> ~/.ssh/known_hosts
 
     - name: Deploy to Server
       run: |
-        ssh -i ~/.ssh/id_rsa $SSH_USERNAME@$SERVER_ADDRESS 'cd $PROJECT_DIRECTORY && git pull origin dev'
+        ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SERVER_ADDRESS }} 'cd ${{ secrets.PROJECT_DIRECTORY }} && git pull origin ${GITHUB_REF##*/}'
