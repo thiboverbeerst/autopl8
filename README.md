@@ -1,4 +1,4 @@
-# Number Plate Object Detection
+# Automatic Number Plate Recognition (ANPR) System
 
 This project is a proof of concept for a number plate object detection system. It uses Object Detection (OD) to detect number plates in images and then uses OCR to extract the text from the number plate. The project is written in Python with the use of the OpenCV, Tensorflow for OD and Tesseract for OCR libraries.
 
