@@ -1,4 +1,4 @@
-# Number Plate Object Detection
+# Automatic Number Plate Recognition (ANPR) System
 
 This project is a proof of concept for a number plate object detection system. It uses Object Detection (OD) to detect number plates in images and then uses OCR to extract the text from the number plate. The project is written in Python with the use of the OpenCV, Tensorflow for OD and Tesseract for OCR libraries.
 
@@ -10,7 +10,7 @@ We had many different solutions for this project, but we decided to go with this
 ## Prerequisites
 
 ### OD Model
-Because the actual OD model is too large to upload to GitHub, you will need to download it from the following link and place it in the `src` directory: https://drive.google.com/file/d/12YvX-wL4qjB1nsa--Wfxyl4Ti8zpHdSg/view?usp=drive_link
+Because the actual OD model is too large to upload to GitHub, you will need to download it from the following link and place it in the `root` directory: https://drive.google.com/file/d/12YvX-wL4qjB1nsa--Wfxyl4Ti8zpHdSg/view?usp=drive_link
 
 The OD model is named `model.pb`.
 
@@ -57,10 +57,10 @@ sudo apt-get install -y \
     git \
     cmake \
     ninja-build \
-    python3-opencv \
     libatlas-base-dev \
     libhdf5-dev \
-    libhdf5-103
+    libhdf5-103 \
+    libopenblas-dev
 
 ```
 
@@ -113,15 +113,12 @@ pyenv deactivate
 
 ### Install dependencies
 
-(1) Install the system dependencies
+(1) Install the Python dependencies  
+Important: TensorFlow has to be installed before the other dependencies and separatly.
 
 ```bash
-sudo apt-get install tesseract-ocr inotify-tools libatlas-base-dev
-```
+python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl
 
-(2) Install the Python dependencies
-
-```bash
 pip install -r requirements.txt
 ```
 
