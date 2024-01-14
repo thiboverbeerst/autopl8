@@ -57,7 +57,6 @@ sudo apt-get install -y \
     git \
     cmake \
     ninja-build \
-    python3-opencv \
     libatlas-base-dev \
     libhdf5-dev \
     libhdf5-103
@@ -113,15 +112,12 @@ pyenv deactivate
 
 ### Install dependencies
 
-(1) Install the system dependencies
+(1) Install the Python dependencies  
+Important: TensorFlow has to be installed before the other dependencies and separatly.
 
 ```bash
-sudo apt-get install tesseract-ocr inotify-tools libatlas-base-dev
-```
+python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl
 
-(2) Install the Python dependencies
-
-```bash
 pip install -r requirements.txt
 ```
 
