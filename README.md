@@ -10,7 +10,7 @@ We had many different solutions for this project, but we decided to go with this
 ## Prerequisites
 
 ### OD Model
-Because the actual OD model is too large to upload to GitHub, you will need to download it from the following link and place it in the `src` directory: https://drive.google.com/file/d/12YvX-wL4qjB1nsa--Wfxyl4Ti8zpHdSg/view?usp=drive_link
+Because the actual OD model is too large to upload to GitHub, you will need to download it from the following link and place it in the `root` directory: https://drive.google.com/file/d/12YvX-wL4qjB1nsa--Wfxyl4Ti8zpHdSg/view?usp=drive_link
 
 The OD model is named `model.pb`.
 
@@ -59,7 +59,8 @@ sudo apt-get install -y \
     ninja-build \
     libatlas-base-dev \
     libhdf5-dev \
-    libhdf5-103
+    libhdf5-103 \
+    libopenblas-dev
 
 ```
 
