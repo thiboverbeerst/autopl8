@@ -1,0 +1,259 @@
+Initializing MQTT Publisher...
+Loading model...
+Loading labels...
+Starting PiCamera...
+[2:51:02.522381404] [74442] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:51:02.564516550] [74493] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:51:02.567084278] [74493] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:51:02.567198369] [74493] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:51:02.571007739] [74442] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:51:02.608990466] [74496] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:51:02.611371920] [74496] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:51:02.611484492] [74496] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:51:02.620578149] [74442] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[2:51:02.621273691] [74496] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+  File "/home/thibo/parkwise-anpr/src/main.py", line 90, in main
+    image = camera.capture_array(camera_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1545, in capture_array
+    return self.dispatch_functions([partial(self.capture_array_, name)], wait, signal_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1309, in dispatch_functions
+    return job.get_result() if wait else job
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 79, in get_result
+    return self._future.result()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 48, in execute
+    done, result = self._functions[0]()
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1539, in capture_array_
+    result = request.make_array(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 161, in make_array
+    return self.picam2.helpers.make_array(self.make_buffer(name), self.config[name])
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 147, in make_buffer
+    if self.stream_map.get(name, None) is None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'dict'
+[2:53:40.084699390] [74638] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:53:40.125996586] [74690] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:53:40.128665707] [74690] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:53:40.128786075] [74690] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:53:40.132121610] [74638] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:53:40.170880072] [74693] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:53:40.174485843] [74693] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:53:40.174610693] [74693] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:53:40.183243489] [74638] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[2:53:40.183772128] [74693] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+  File "/home/thibo/parkwise-anpr/src/main.py", line 90, in main
+QSocketNotifier: Invalid socket 3 and type 'Read', disabling...
+    image = camera.capture_array("mjpeg", use_video_port=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Picamera2.capture_array() got an unexpected keyword argument 'use_video_port'
+[2:54:16.943654588] [74816] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:54:16.991756465] [74867] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:54:16.994581954] [74867] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:54:16.994953522] [74867] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:54:16.998251578] [74816] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:54:17.037115276] [74870] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:54:17.040244613] [74870] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:54:17.040360889] [74870] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:54:17.049657103] [74816] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[2:54:17.050182649] [74870] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+  File "/home/thibo/parkwise-anpr/src/main.py", line 90, in main
+    image = camera.capture_array("mjpeg")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1545, in capture_array
+    return self.dispatch_functions([partial(self.capture_array_, name)], wait, signal_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1309, in dispatch_functions
+QSocketNotifier: Invalid socket 3 and type 'Read', disabling...
+    return job.get_result() if wait else job
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 79, in get_result
+    return self._future.result()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 48, in execute
+    done, result = self._functions[0]()
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1539, in capture_array_
+    result = request.make_array(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 161, in make_array
+    return self.picam2.helpers.make_array(self.make_buffer(name), self.config[name])
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 148, in make_buffer
+    raise RuntimeError(f'Stream {name!r} is not defined')
+RuntimeError: Stream 'mjpeg' is not defined
+[2:54:57.637454869] [74992] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:54:57.678076296] [75043] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:54:57.680726030] [75043] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:54:57.680846825] [75043] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:54:57.684693577] [74992] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:54:57.722758101] [75046] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:54:57.725160506] [75046] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:54:57.725279708] [75046] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:54:57.733432297] [74992] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[2:54:57.734155785] [75046] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+2024-01-15 03:44:37.266394: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+  File "/home/thibo/parkwise-anpr/src/main.py", line 111, in main
+    cv2.imshow("Video Stream", image)
+cv2.error: OpenCV(4.9.0) /io/opencv/modules/highgui/src/window.cpp:1272: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+[2:56:23.959812498] [75194] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:56:24.000883395] [75246] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:56:24.003522187] [75246] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:56:24.003640111] [75246] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:56:24.007500810] [75194] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[2:56:24.046861734] [75249] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[2:56:24.050198256] [75249] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[2:56:24.050982392] [75249] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[2:56:24.061643040] [75194] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[2:56:24.062354251] [75249] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+QSocketNotifier: Invalid socket 3 and type 'Read', disabling...
+  File "/home/thibo/parkwise-anpr/src/main.py", line 90, in main
+    image = camera.capture_array("Video Stream")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1545, in capture_array
+    return self.dispatch_functions([partial(self.capture_array_, name)], wait, signal_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1309, in dispatch_functions
+    return job.get_result() if wait else job
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 79, in get_result
+    return self._future.result()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/thibo/.pyenv/versions/3.11.0/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/lib/python3/dist-packages/picamera2/job.py", line 48, in execute
+    done, result = self._functions[0]()
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1539, in capture_array_
+    result = request.make_array(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 161, in make_array
+    return self.picam2.helpers.make_array(self.make_buffer(name), self.config[name])
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/picamera2/request.py", line 148, in make_buffer
+    raise RuntimeError(f'Stream {name!r} is not defined')
+RuntimeError: Stream 'Video Stream' is not defined
+[3:02:58.023221645] [75421] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:02:58.067925905] [75477] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:02:58.070735886] [75477] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:02:58.070858088] [75477] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:02:58.074134452] [75421] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:02:58.110714911] [75480] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:02:58.113491875] [75480] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:02:58.113610595] [75480] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:02:58.121773320] [75421] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[3:02:58.122304850] [75480] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+2024-01-15 03:52:37.631205: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+Traceback (most recent call last):
+  File "/home/thibo/parkwise-anpr/src/main.py", line 166, in <module>
+    main()
+  File "/home/thibo/parkwise-anpr/src/main.py", line 111, in main
+    cv2.imshow("Video Stream", image)
+cv2.error: OpenCV(4.9.0) /io/opencv/modules/highgui/src/window.cpp:1272: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvShowImage'
+
+[3:05:53.514896389] [77381] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:05:53.554925252] [77432] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:05:53.557882122] [77432] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:05:53.558188489] [77432] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:05:53.561559391] [77381] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:05:53.600136513] [77435] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:05:53.603393620] [77435] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:05:53.603512655] [77435] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:05:53.613498603] [77381] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[3:05:53.614089725] [77435] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+QObject::moveToThread: Current thread (0x7f140286a0) is not the object's thread (0x7f1416eec0).
+Cannot move to target thread (0x7f140286a0)
+
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/thibo/.pyenv/versions/myvenv/lib/python3.11/site-packages/cv2/qt/plugins" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx.
+
+[3:29:35.063895344] [99062] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:29:35.110791703] [99123] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:29:35.113590950] [99123] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:29:35.113711712] [99123] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:29:35.116937747] [99062] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:29:35.156853080] [99126] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:29:35.160659664] [99126] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:29:35.160968856] [99126] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:29:35.170261304] [99062] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[3:29:35.171021210] [99126] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+QObject::moveToThread: Current thread (0x7f280286a0) is not the object's thread (0x7f2816eae0).
+Cannot move to target thread (0x7f280286a0)
+
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/thibo/.pyenv/versions/myvenv/lib/python3.11/site-packages/cv2/qt/plugins" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx.
+
+[3:36:48.446213796] [100542] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:36:48.494128811] [100594] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:36:48.496739540] [100594] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:36:48.496860409] [100594] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:36:48.500170814] [100542] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:36:48.538212037] [100597] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:36:48.540629175] [100597] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:36:48.540747785] [100597] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:36:48.548950763] [100542] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[3:36:48.549459646] [100597] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+QObject::moveToThread: Current thread (0x7f3c0286a0) is not the object's thread (0x7f3c16eae0).
+Cannot move to target thread (0x7f3c0286a0)
+
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/thibo/.pyenv/versions/myvenv/lib/python3.11/site-packages/cv2/qt/plugins" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx.
+
+[3:41:55.472686110] [101015] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:41:55.515091074] [101081] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:41:55.517735455] [101081] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:41:55.517858620] [101081] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:41:55.521273321] [101015] [1;32m INFO [1;37mCamera [1;34mcamera_manager.cpp:284 [0mlibcamera v0.1.0+118-563cd78e
+[3:41:55.558499874] [101084] [1;33m WARN [1;37mRPiSdn [1;34msdn.cpp:39 [0mUsing legacy SDN tuning - please consider moving SDN inside rpi.denoise
+[3:41:55.561072349] [101084] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:444 [0mRegistered camera /base/soc/i2c0mux/i2c@1/ov5647@36 to Unicam device /dev/media0 and ISP device /dev/media1
+[3:41:55.561193606] [101084] [1;32m INFO [1;37mRPI [1;34mpipeline_base.cpp:1142 [0mUsing configuration file '/usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml'
+[3:41:55.571485412] [101015] [1;32m INFO [1;37mCamera [1;34mcamera.cpp:1183 [0mconfiguring streams: (0) 1280x720-XBGR8888 (1) 1920x1080-SGBRG10_CSI2P
+[3:41:55.572434674] [101084] [1;32m INFO [1;37mRPI [1;34mvc4.cpp:608 [0mSensor: /base/soc/i2c0mux/i2c@1/ov5647@36 - Selected sensor format: 1920x1080-SGBRG10_1X10 - Selected unicam format: 1920x1080-pGAA
+QObject::moveToThread: Current thread (0x7f380286a0) is not the object's thread (0x7f38172ab0).
+Cannot move to target thread (0x7f380286a0)
+
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "/home/thibo/.pyenv/versions/myvenv/lib/python3.11/site-packages/cv2/qt/plugins" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: xcb, eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx.
+

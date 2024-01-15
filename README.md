@@ -27,7 +27,7 @@ Model metrics (image):
 
 ### Operating System
 
-When running this application on a Raspberry Pi, you will need the Raspberry Pi OS **32-bit** image. The 64-bit image does not work with PiCamera.  
+When running this application on a Raspberry Pi, you will need the Raspberry Pi OS **64-bit** image. 
 A linux operating system is required for this application to work.
 
 ## Get Started
@@ -60,7 +60,8 @@ sudo apt-get install -y \
     libatlas-base-dev \
     libhdf5-dev \
     libhdf5-103 \
-    libopenblas-dev
+    libopenblas-dev \
+    libcap-dev
 
 ```
 
@@ -84,11 +85,11 @@ eval "$(pyenv virtualenv-init -)"
 source ~/.bashrc
 ```
 
-(5) Install Python 3.10
+(5) Install Python 3.11
 
 ```bash
-pyenv install 3.10.0
-pyenv global 3.10.0
+pyenv install 3.11.0
+pyenv global 3.11.0
 ```
 
 ### Create a virtual environment
@@ -96,7 +97,7 @@ pyenv global 3.10.0
 (1) Create a virtual environment
 
 ```bash
-pyenv virtualenv 3.10.0 venv
+pyenv virtualenv 3.11.0 venv
 ```
 
 (2) Activate the virtual environment
@@ -332,24 +333,25 @@ mqtt_publisher = MQTTPublisher(os.getenv('BROKER_ADDRESS'), int(os.getenv('BROKE
     Raspberry Pi Camera
     ```python
     if args.camera == 'rpi':
-    from picamera.array import PiRGBArray
-    from picamera import PiCamera
+        from picamera2 import Picamera2, Preview
 
-    camera = PiCamera()
-    camera.resolution = (1280, 720)
-    camera.framerate = 24
-    rawCapture = PiRGBArray(camera, size=(1280, 720))
-    time.sleep(0.1)
-    # Capture loop
+        # Using PiCamera
+        print("Starting PiCamera...")
+        camera = Picamera2()
+        camera_config = camera.create_preview_configuration({"size": (1280, 720)})
+        camera.configure(camera_config)
+        camera.start()
+        time.sleep(3)
+        # Capture loop
     ```
     OpenCV Camera
     ```python
     else:
-    cap = cv2.VideoCapture('/dev/video0')
-    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-    # Capture loop
+        cap = cv2.VideoCapture('/dev/video0')
+        cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        # Capture loop
     ```
 - Object Detection and OCR: For each captured image, performs object detection and OCR. If a number plate is detected, the text is printed to the console and send to the server via MQTT.
     ```python

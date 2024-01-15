@@ -1,4 +1,5 @@
 # Core Functionality
+argparse
 numpy
 pillow
 requests
@@ -6,6 +7,7 @@ pytesseract
 paho-mqtt
 python-dotenv
 opencv-python
+tensorflow
 
 # Raspberry Pi Specific
-picamera
+picamera2
