@@ -1,10 +1,5 @@
-# The steps implemented in the object detection sample code: 
-# 1. for an image of width and height being (w, h) pixels, resize image to (w', h'), where w/h = w'/h' and w' x h' = 262144
-# 2. resize network input size to (w', h')
-# 3. pass the image to network and do inference
-# (4. if inference speed is too slow for you, try to make w' x h' smaller, which is defined with DEFAULT_INPUT_SIZE (in object_detection.py or ObjectDetection.cs))
-"""Sample prediction script for TensorFlow 1.x."""
 import sys
+import json
 from dotenv import load_dotenv
 import os
 import cv2
@@ -13,8 +8,10 @@ import numpy as np
 from PIL import Image
 from object_detection import ObjectDetection
 from mqtt_handler import MQTTPublisher
-import pytesseract
 import time
+import argparse
+import pytesseract
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 
 MODEL_FILENAME = 'model.pb'
 LABELS_FILENAME = 'labels.txt'
@@ -77,20 +74,20 @@ def main():
     od_model = TFObjectDetection(graph_def, labels)
 
     if args.camera == 'rpi':
-        from picamera.array import PiRGBArray
-        from picamera import PiCamera
+        from picamera2 import Picamera2, Preview
 
         # Using PiCamera
-        print("Using PiCamera...")
-        camera = PiCamera()
-        camera.resolution = (1280, 720)
-        camera.framerate = 24
-        rawCapture = PiRGBArray(camera, size=(1280, 720))
-        time.sleep(0.1)
+        print("Starting PiCamera...")
+        camera = Picamera2()
+        camera_config = camera.create_preview_configuration({"size": (1280, 720)})
+        camera.configure(camera_config)
+        camera.start()
+        time.sleep(3)
 
         try:
-            for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-                image = frame.array
+            while True:
+                # Capture the image
+                image = camera.capture_array() # To capture a PIL image
                 image_pil = Image.fromarray(image)
 
                 # Object detection
@@ -103,6 +100,13 @@ def main():
                         text = perform_ocr(image_pil, pred['boundingBox'])
                         print("Detected Text:", text)
 
+                        # Draw a green bounding box
+                        left = int(pred['boundingBox']['left'] * image.shape[1])
+                        top = int(pred['boundingBox']['top'] * image.shape[0])
+                        width = int(pred['boundingBox']['width'] * image.shape[1])
+                        height = int(pred['boundingBox']['height'] * image.shape[0])
+                        cv2.rectangle(image, (left, top), (left + width, top + height), (0, 255, 0), 2)
+
                         # MQTT Message
                         json_data = {
                             "topic": os.getenv('MQTT_TOPIC'),
@@ -112,7 +116,8 @@ def main():
 
                 # Display the frame
                 cv2.imshow("Video Stream", image)
-                rawCapture.truncate(0)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
 
         except KeyboardInterrupt:
             print("Stopping video stream...")
@@ -146,6 +151,13 @@ def main():
                         print("Number plate detected. Performing OCR...")
                         text = perform_ocr(image_pil, pred['boundingBox'])
                         print("Detected Text:", text)
+
+                        # Draw a green bounding box
+                        left = int(pred['boundingBox']['left'] * frame.shape[1])
+                        top = int(pred['boundingBox']['top'] * frame.shape[0])
+                        width = int(pred['boundingBox']['width'] * frame.shape[1])
+                        height = int(pred['boundingBox']['height'] * frame.shape[0])
+                        cv2.rectangle(frame, (left, top), (left + width, top + height), (0, 255, 0), 2)
 
                         # MQTT Message
                         json_data = {
